@@ -84,11 +84,11 @@
       top: 10px;
       left: 50%;
       transform: translateX(-50%);
-      background: rgba(255, 255, 255, 0.39);
+      background: rgba(255, 255, 255, 0.623);
       color: #000;
       padding: 15px;
       border-radius: 20px;
-      font-size: 18px;
+      font-size: 19px;
       opacity: 0;
       transition: opacity 0.8s ease, top 0.8s ease;
       white-space: normal;
@@ -120,9 +120,9 @@
       .moon span { font-size: 18px; }
       .arrow { font-size: 16px; padding: 6px 12px; right: -140px; top: 30px; }
       .message {
-        font-size: 16px;
+        font-size: 19px;
         padding: 10px;
-        width: 250px;
+        width: 260px;
         height: 170px;
         top: 20px;
       }
@@ -134,10 +134,10 @@
       .moon span { font-size: 14px; }
       .arrow { font-size: 14px; padding: 4px 10px; right: -110px; top: 25px; }
       .message {
-        font-size: 14px;
+        font-size: 19px;
         padding: 8px;
         width: 200px;
-        height: 170px;
+        height: 250px;
         top: 25px;
       }
       .message.show { top: 70px; }
@@ -160,10 +160,21 @@
     <img src="coneja.png" alt="conejita">
   </div>
 
+  <!-- Audio oculto -->
+  <audio id="bgMusic" loop>
+    <source src="Wherever_you_are.mp3" type="audio/mpeg">
+    Tu navegador no soporta el audio.
+  </audio>
+
   <script>
     function showMessage() {
       const msg = document.getElementById("loveMessage");
       msg.classList.add("show");
+
+      // reproducir la música
+      const music = document.getElementById("bgMusic");
+      music.play();
+
       setTimeout(() => msg.classList.remove("show"), 60000);
     }
   </script>
