@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para ti 💖</title>
+  <!-- Fuente kawaii desde Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+    }
+
+    /* estrellas */
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      background-image: radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 2px);
+      background-size: 50px 50px;
+      z-index: 0;
+      animation: moveStars 20s linear infinite;
+    }
+    @keyframes moveStars {
+      from {background-position: 0 0;}
+      to {background-position: 1000px 1000px;}
+    }
+
+    /* luna */
+    .moon {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 40px #fff, 0 0 80px #fff;
+      cursor: pointer;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Caveat', cursive;
+    }
+
+    .moon span {
+      color: #ff99cc;
+      font-size: 24px;
+      font-weight: bold;
+      text-shadow: 0 0 4px #fff;
+      pointer-events: none;
+    }
+
+    /* flecha y texto */
+    .arrow {
+      position: absolute;
+      right: -200px;
+      top: 40px;
+      font-size: 20px;
+      color: #fff;
+      background: rgba(255,255,255,0.1);
+      padding: 8px 16px;
+      border: 2px solid #fff;
+      border-radius: 12px;
+      animation: bounce 1.5s infinite;
+      white-space: nowrap;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(10px); }
+    }
+
+    /* mensaje */
+    .message {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.39);
+      color: #000;
+      padding: 15px;
+      border-radius: 20px;
+      font-size: 18px;
+      opacity: 0;
+      transition: opacity 0.8s ease, top 0.8s ease;
+      white-space: normal;
+      width: 300px;
+      height: 170px;
+      text-align: center;
+      word-wrap: break-word;
+      overflow-y: auto;
+    }
+    .message.show {
+      top: 60px;
+      opacity: 1;
+    }
+
+    /* conejita */
+    .bunny {
+      margin-top: 30px;
+      z-index: 1;
+    }
+    .bunny img {
+      width: 150px;
+      max-width: 40vw;
+      height: auto;
+    }
+
+    /* Media Queries */
+    @media (max-width: 768px) {
+      .moon { width: 90px; height: 90px; }
+      .moon span { font-size: 18px; }
+      .arrow { font-size: 16px; padding: 6px 12px; right: -140px; top: 30px; }
+      .message {
+        font-size: 16px;
+        padding: 10px;
+        width: 250px;
+        height: 170px;
+        top: 20px;
+      }
+      .message.show { top: 80px; }
+    }
+
+    @media (max-width: 480px) {
+      .moon { width: 70px; height: 70px; }
+      .moon span { font-size: 14px; }
+      .arrow { font-size: 14px; padding: 4px 10px; right: -110px; top: 25px; }
+      .message {
+        font-size: 14px;
+        padding: 8px;
+        width: 200px;
+        height: 170px;
+        top: 25px;
+      }
+      .message.show { top: 70px; }
+      .bunny img { max-width: 60vw; }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+
+  <div class="moon" onclick="showMessage()">
+    <span>V&E</span>
+    <div class="arrow">👉 Pincha la luna</div>
+    <div class="message" id="loveMessage">
+      Como la luna ilumina la noche sin pedir nada a cambio, así iluminas mi vida con tu presencia. Eres mi conejita, pequeña y preciosa, y cada instante contigo es una luz que me guía. No hay distancia, ni sombra, ni tiempo que pueda apagar lo que siento por ti 💖🌙
+    </div>
+  </div>
+
+  <div class="bunny">
+    <img src="coneja.png" alt="conejita">
+  </div>
+
+  <script>
+    function showMessage() {
+      const msg = document.getElementById("loveMessage");
+      msg.classList.add("show");
+      setTimeout(() => msg.classList.remove("show"), 60000);
+    }
+  </script>
+</body>
+</html>
